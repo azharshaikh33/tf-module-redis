@@ -7,6 +7,7 @@ resource "aws_elasticache_cluster" "redis" {
   engine_version       = "6.2"
   port                 = 6379
   security_group_ids   = [aws_security_group.allow_redis.id]
+  subnet_group_name    = data.terraform_remote_state.vpc.outputs.VPC_ID
 }
 
 resource "aws_elasticache_parameter_group" "default" {
