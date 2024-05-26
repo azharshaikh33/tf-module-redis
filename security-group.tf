@@ -7,16 +7,16 @@ resource "aws_security_group" "allow_redis" {
   # Inbound rules
   ingress {
     description = "Allow Elastic Cache from local network"
-    from_port   = 6379
-    to_port     = 6379
+    from_port   = var.ELASTIC_CACHE_PORT
+    to_port     = var.ELASTIC_CACHE_PORT
     protocol    = "tcp"
     cidr_blocks = [data.terraform_remote_state.vpc.outputs.DEFAULT_VPC_CIDR]
   }
 
     ingress {
     description = "Allow Elastic Cache from local network"
-    from_port   = 6379
-    to_port     = 6379
+    from_port   = var.ELASTIC_CACHE_PORT
+    to_port     = var.ELASTIC_CACHE_PORT
     protocol    = "tcp"
     cidr_blocks = [data.terraform_remote_state.vpc.outputs.VPC_CIDR]
   }
